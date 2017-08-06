@@ -85,8 +85,8 @@ Player.prototype.handleInput = function(move) {
 
 //Function set Players position 
 Player.prototype.playerReset = function() {
-    player.x = 200;
-    player.y = 380;
+    this.x = 200;
+    this.y = 380;
 };
 
 

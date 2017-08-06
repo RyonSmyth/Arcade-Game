@@ -4,6 +4,8 @@ var Enemy = function() {
     this.x = -50 * (Math.floor(Math.random() * 35) + 1);
     this.y = 60 + (Math.floor(Math.random() * 3) * 80);
 
+    this.speed = 450;
+
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -11,25 +13,25 @@ var Enemy = function() {
 Enemy.prototype.update = function(dt) {
  
     // sets enemy speed
-    this.x += 450 * dt;
+    this.x += this.speed * dt;
 
     // Resets Enemy position
     if( this.x >= 505) {
         this.x = -50 * (Math.floor(Math.random() * 35) + 1);
         this.y = 60 + (Math.floor(Math.random() * 3) * 80);
     };
-
+    
     // Causes player to reset position if collides with enemy
     if(player.y == this.y ) {
         if(player.x >= (this.x - 15) &&  player.x <= (this.x + 15)) {
-            playerReset();
+            player.playerReset();
         }
     };
 
 
 
-
 };
+
 
 // Draw the enemy on the screen
 Enemy.prototype.render = function() {
@@ -49,7 +51,7 @@ var Player = function() {
 Player.prototype.update = function() {
 
    if(this.y === -20) {
-        playerReset();
+        player.playerReset();
 
         allEnemies = [];
         spawnEnemies(6);
@@ -82,7 +84,7 @@ Player.prototype.handleInput = function(move) {
 };
 
 //Function set Players position 
-function playerReset() {
+Player.prototype.playerReset = function() {
     player.x = 200;
     player.y = 380;
 }

@@ -19,14 +19,14 @@ Enemy.prototype.update = function(dt) {
     if( this.x >= 505) {
         this.x = -50 * (Math.floor(Math.random() * 35) + 1);
         this.y = 60 + (Math.floor(Math.random() * 3) * 80);
-    };
+    }
     
     // Causes player to reset position if collides with enemy
     if(player.y == this.y ) {
         if(player.x >= (this.x - 15) &&  player.x <= (this.x + 15)) {
             player.playerReset();
         }
-    };
+    }
 
 
 
@@ -87,17 +87,17 @@ Player.prototype.handleInput = function(move) {
 Player.prototype.playerReset = function() {
     player.x = 200;
     player.y = 380;
-}
+};
 
 
 // Function to add enimies to allEnemies array 
 function spawnEnemies(num) {
     var i = 0;
     while(i <= num) {
-        allEnemies.push(new Enemy);
+        allEnemies.push(new Enemy());
         i++;
     }
-};
+}
 
 
 // Array to store enemies
